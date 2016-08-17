@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jeeplus-weixin:war exploded">
+    <output-path>$PROJECT_DIR$/jeeplus-weixin/target/jeeplus-weixin</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jeeplus-weixin" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/jeeplus-weixin/target/jeeplus-weixin/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="jeeplus-weixin/web/Web" />
+    </root>
+  </artifact>
+</component>
