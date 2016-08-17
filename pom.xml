@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -9,7 +10,6 @@
 
   <name>jeeplus-parent</name>
   <url>http://maven.apache.org</url>
-
 
   <licenses>
     <license>
@@ -32,6 +32,11 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>4.2.4.RELEASE</spring.version>
+    <spring-security.version>4.1.0.RELEASE</spring-security.version>
+    <jackson.version>2.5.3</jackson.version>
+    <java-version>1.8</java-version>
+    <jdk-version>1.8</jdk-version>
   </properties>
 
   <dependencies>
@@ -41,19 +46,103 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <!--springframework的依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-expression</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-websocket</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aspects</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
   </dependencies>
   <modules>
     <module>jeeplus-web</module>
     <module>jeeplus-weixin</module>
+    <module>jeeplus-test</module>
+    <module>jeeplus-test</module>
+    <module>jeeplus-test</module>
+    <module>jeeplus-admin</module>
+    <module>jeeplus-common</module>
+    <module>jeeplus-monitor</module>
   </modules>
+
+  <dependencyManagement>
+    <dependencies>
+
+    </dependencies>
+  </dependencyManagement>
 
   <issueManagement>
     <system>github</system>
-    <url>https://github.com/alibaba/dubbo/issues</url>
+    <url>https://github.com/yuzhiping/jeeplus/issues</url>
   </issueManagement>
   <scm>
-    <url>https://github.com/alibaba/dubbo</url>
-    <connection>https://github.com/alibaba/dubbo.git</connection>
+    <url>https://github.com/alibaba/jeeplus</url>
+    <connection>https://github.com/yuzhiping/jeeplus.git</connection>
   </scm>
 
 </project>

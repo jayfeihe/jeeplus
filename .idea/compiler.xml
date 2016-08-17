@@ -22,12 +22,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="jeeplus-admin" />
+        <module name="jeeplus-common" />
+        <module name="jeeplus-monitor" />
+        <module name="jeeplus-test" />
         <module name="jeeplus-web" />
         <module name="jeeplus-weixin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jeeplus" target="1.5" />
+      <module name="jeeplus-admin" target="1.5" />
+      <module name="jeeplus-common" target="1.5" />
+      <module name="jeeplus-monitor" target="1.5" />
+      <module name="jeeplus-test" target="1.5" />
       <module name="jeeplus-web" target="1.5" />
       <module name="jeeplus-weixin" target="1.5" />
     </bytecodeTargetLevel>

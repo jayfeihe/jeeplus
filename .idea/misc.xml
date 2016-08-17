@@ -39,6 +39,8 @@
     </properties>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/jeeplus-admin" />
+    <file type="web" url="file://$PROJECT_DIR$/jeeplus-monitor" />
     <file type="web" url="file://$PROJECT_DIR$/jeeplus-web" />
     <file type="web" url="file://$PROJECT_DIR$/jeeplus-weixin" />
   </component>
@@ -47,6 +49,11 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/jeeplus-test/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
