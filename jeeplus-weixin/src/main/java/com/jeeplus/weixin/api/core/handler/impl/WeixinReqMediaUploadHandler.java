@@ -18,7 +18,6 @@ import com.jeeplus.weixin.api.core.util.HttpRequestProxy;
 import com.jeeplus.weixin.api.core.util.WeiXinReqUtil;
 
 /**
- * 新增临时素材
  * Created by yuzp17311 on 2016/8/22.
  */
 public class WeixinReqMediaUploadHandler implements WeiXinReqHandler {
@@ -78,7 +77,6 @@ public class WeixinReqMediaUploadHandler implements WeiXinReqHandler {
 					parameters.remove("filePathName");
 					strReturnInfo = HttpRequestProxy.uploadMedia(reqUrl, parameters, "UTF-8", fileIn, file.getName(), contentType);
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					throw new WexinReqException(e);
 				}
 			}

@@ -22,28 +22,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 微信--menu
- * 
- * @author lizr
- * 
+ * 对应微信API的“自定义菜单”
+ * http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html
+ * Created by yuzp17311 on 2016/8/23.
  */
 public class JwMenuAPI {
 
 	/**
-	 * 创建菜单
+	 * 自定义菜单创建接口
+     * http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html
 	 *  button	是	一级菜单数组，个数应为1~3个
 		sub_button	否	二级菜单数组，个数应为1~5个
 		type	是	菜单的响应动作类型
 		name	是	菜单标题，不超过16个字节，子菜单不超过40个字节
 		key	click等点击类型必须	菜单KEY值，用于消息接口推送，不超过128字节
 		url	view类型必须	网页链接，用户点击菜单可打开链接，不超过256字节
-	 * @param accessToken
+	 * @param access_token 公众号的access_token
 	 * @param button  的json字符串
 	 * @throws WexinReqException
 	 */
-	public static String createMenu(String accessToken,List<WeixinButton> button) throws WexinReqException{
+	public static String createMenu(String access_token,List<WeixinButton> button) throws WexinReqException{
 		MenuCreate m = new MenuCreate();
-		m.setAccess_token(accessToken);
+		m.setAccess_token(access_token);
 		m.setButton(button);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(m);
 		Object error = result.get(WeiXinConstant.RETURN_ERROR_INFO_CODE);
@@ -57,14 +57,15 @@ public class JwMenuAPI {
 	}
 	
 	/**
-	 * 获取所有的菜单
-	 * @param accessToken
+	 * 自定义菜单查询接口
+     * http://mp.weixin.qq.com/wiki/5/f287d1a5b78a35a8884326312ac3e4ed.html
+	 * @param access_token 公众号的access_token
 	 * @return
 	 * @throws WexinReqException
 	 */
-	public static List<WeixinButton> getAllMenu(String accessToken) throws WexinReqException{
+	public static List<WeixinButton> getAllMenu(String access_token) throws WexinReqException{
 		MenuGet g = new MenuGet();
-		g.setAccess_token(accessToken);
+		g.setAccess_token(access_token);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(g);
 		Object error = result.get(WeiXinConstant.RETURN_ERROR_INFO_CODE);
 		List<WeixinButton> lstButton = null;
@@ -94,30 +95,31 @@ public class JwMenuAPI {
 	}
 	
 	/**
-	 * 删除所有的菜单
-	 * @param accessToken
+	 * 自定义菜单删除接口
+     * http://mp.weixin.qq.com/wiki/3/de21624f2d0d3dafde085dafaa226743.html
+	 * @param access_token 公众号的access_token
 	 * @return
 	 * @throws WexinReqException
 	 */
-	public static String deleteMenu(String accessToken) throws WexinReqException{
+	public static String deleteMenu(String access_token) throws WexinReqException{
 		MenuDelete m = new MenuDelete();
-		m.setAccess_token(accessToken);
+		m.setAccess_token(access_token);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(m);
 		String msg = result.getString(WeiXinConstant.RETURN_ERROR_INFO_MSG);
 		return msg;
 	}
 	
-	//update-begin--Author:luobaoli  Date:20150714 for：增加“获取自定义菜单配置接口”功能接口
-	//update-begin--Author:luobaoli  Date:20150715 for：优化该方法的处理逻辑
+
 	/**
 	 * 获取自定义接口配置
-	 * @param accessToken
+	 * @param access_token
+     * http://mp.weixin.qq.com/wiki/14/293d0cb8de95e916d1216a33fcb81fd6.html
 	 * @return
 	 * @throws WexinReqException
 	 */
-	public static CustomWeixinButtonConfig getAllMenuConfigure(String accessToken) throws WexinReqException{
+	public static CustomWeixinButtonConfig getAllMenuConfigure(String access_token) throws WexinReqException{
 		MenuConfigureGet cmcg = new MenuConfigureGet();
-		cmcg.setAccess_token(accessToken);
+		cmcg.setAccess_token(access_token);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(cmcg);
 		Object error = result.get(WeiXinConstant.RETURN_ERROR_INFO_CODE);
 		
@@ -160,52 +162,7 @@ public class JwMenuAPI {
 		}
 		return customWeixinButtonConfig;
 	}
-	//update-end--Author:luobaoli  Date:20150715 for：优化该方法的处理逻辑
-	//update-end--Author:luobaoli  Date:20150714 for：增加“获取自定义菜单配置接口”功能接口
-	
-	public static void main(String[] args){
-		String s="";
-		try {
-			s = "3DGIfJqqupzTPxvq_P-0ATDC2MDjFLqaz8S41SPmRIqLaA3PSb8FgN_PuhpZ5jEB4D6w7ZNeX3gbC3CfSOAz2wt4DxVKi2HD5BCjoecrB0Q";
-//			s = JwTokenAPI.getAccessToken("wx00737224cb9dbc7d","b9479ebdb58d1c6b6efd4171ebe718b5");
-//			s = JwTokenAPI.getAccessToken("wx298c4cc7312063df","fbf8cebf983c931bd7c1bee1498f8605");
-			System.out.println(s);
-//			WeixinButton button = new WeixinButton();
-			CustomWeixinButtonConfig cb = JwMenuAPI.getAllMenuConfigure(s);
-			
-//			for(WeixinButton bb : b){
-//				System.out.println(bb.toString());
-//			}
-//			List<WeixinButton> sub_button = new ArrayList<WeixinButton>();
-//			List<WeixinButton> testsUb = new ArrayList<WeixinButton>();
-//			WeixinButton w = new WeixinButton();
-//			w.setName("测试菜单");
-//			testsUb.add(w);
-//			
-//			WeixinButton w1 = new WeixinButton();
-//			/*
-//			   "type": "scancode_waitmsg", 
-//               "name": "扫码带提示", 
-//               "key": "rselfmenu_0_0",
-//            */ 
-//			w1.setName("测试sub菜单");
-//			w1.setKey("rselfmenu_0_0");
-//			w1.setType("scancode_waitmsg");
-//			sub_button.add(w1);
-//			w.setSub_button(sub_button);
-//			
-//			
-//			//s = getMenuButtonJson("button",b);
-//			/*Gson gson = new Gson();
-//			System.out.println(json);*/
-//			s= JwMenuAPI.createMenu(s,testsUb);
-//			System.out.println(s);
-		} catch (WexinReqException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+
 	
 	
 	

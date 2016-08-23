@@ -3,6 +3,7 @@ package com.jeeplus.weixin.api.wxuser.group;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jeeplus.weixin.api.wxbase.wxtoken.JwBasicAPI;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -17,7 +18,6 @@ import com.jeeplus.weixin.api.core.req.model.user.GroupGetId;
 import com.jeeplus.weixin.api.core.req.model.user.GroupMembersUpdate;
 import com.jeeplus.weixin.api.core.req.model.user.GroupUpdate;
 import com.jeeplus.weixin.api.core.util.WeiXinConstant;
-import com.jeeplus.weixin.api.wxbase.wxtoken.JwTokenAPI;
 
 /**
  * 微信--用户
@@ -186,7 +186,7 @@ public class JwGroupAPI {
 	 */
 	private static void getAccessToken() throws WexinReqException{
 
-		System.out.println(TOKEN=JwTokenAPI.getAccessToken("wxd2b52b8f4bd5af7f","1b982dba2c3f853c3396babcdfa6cb1e"));
+		System.out.println(TOKEN= JwBasicAPI.getAccessToken("wxd2b52b8f4bd5af7f","1b982dba2c3f853c3396babcdfa6cb1e"));
 
 	}
 	/**

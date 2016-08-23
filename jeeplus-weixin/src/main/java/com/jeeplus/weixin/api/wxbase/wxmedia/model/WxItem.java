@@ -1,6 +1,7 @@
 package com.jeeplus.weixin.api.wxbase.wxmedia.model;
 
-import org.jeewx.api.wxsendmsg.model.WxArticle;
+
+import com.jeeplus.weixin.api.wxsendmsg.model.WxArticle;
 
 /**
  * 图文消息图文消息

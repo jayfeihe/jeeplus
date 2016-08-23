@@ -9,7 +9,7 @@ import com.jeeplus.weixin.api.report.datastatistics.graphicanalysis.JwGraphicAna
 import com.jeeplus.weixin.api.report.datastatistics.graphicanalysis.model.GraphicAnalysisRtnInfo;
 import com.jeeplus.weixin.api.report.datastatistics.useranalysis.JwUserAnalysisAPI;
 import com.jeeplus.weixin.api.report.datastatistics.useranalysis.model.UserAnalysisRtnInfo;
-import com.jeeplus.weixin.api.wxbase.wxtoken.JwTokenAPI;
+import com.jeeplus.weixin.api.wxbase.wxtoken.JwBasicAPI;
 
 
 public class Test {
@@ -38,7 +38,7 @@ public class Test {
 	}
 	
 	public String getAccessToken() throws WexinReqException{
-		return JwTokenAPI.getAccessToken(appid, appscret);
+		return JwBasicAPI.getAccessToken(appid, appscret);
 	}
 	//测试 获取用户增减数据
 	@SuppressWarnings("static-access")

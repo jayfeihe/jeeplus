@@ -1,12 +1,11 @@
 package com.jeeplus.weixin.api.wxbase.wxmedia.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.jeeplus.weixin.api.wxsendmsg.model.WxArticle;
 
-import org.jeewx.api.wxsendmsg.model.WxArticle;
+
 /**
- * 修改消息素材
- * @author lihongxuan
+ * 修改图文消息素材
+ * Created by yuzp17311 on 2016/8/23.
  *
  */
 public class WxUpdateArticle {

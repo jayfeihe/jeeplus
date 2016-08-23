@@ -22,20 +22,20 @@ import org.slf4j.LoggerFactory;
 
 /**
  * 获取自动回复规则
- * @author luobaoli
- *
+ * http://mp.weixin.qq.com/wiki/8/806878e1fc2b9e9aa618ae33896b04c4.html
+ * Created by yuzp17311 on 2016/8/22.
  */
 public class JwGetAutoReplyRuleAPI {
 	private static Logger logger = LoggerFactory.getLogger(JwGetAutoReplyRuleAPI.class);
 	
 	/**
 	 * 获取自动回复规则
-	 * @param accessToken
+	 * @param access_token
 	 * @return
 	 */
-	public static AutoReplyInfoRule getAutoReplyInfoRule(String accessToken) throws WexinReqException{
+	public static AutoReplyInfoRule getAutoReplyInfoRule(String access_token) throws WexinReqException{
 		AutoReplyRuleGet arr = new AutoReplyRuleGet();
-		arr.setAccess_token(accessToken);
+		arr.setAccess_token(access_token);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(arr);
 		Object error = result.get(WeiXinConstant.RETURN_ERROR_INFO_CODE);
 		
@@ -88,15 +88,5 @@ public class JwGetAutoReplyRuleAPI {
 		}
 		
 		return autoReplyInfoRule;
-	}
-	
-	public static void main(String[] args) {
-		try {
-			//String s = JwTokenAPI.getAccessToken("wx298c4cc7312063df","fbf8cebf983c931bd7c1bee1498f8605");
-			String s = "chsqpXVzXmPgqgZrrZnQzxqEi2L-1qStuVDOeZ-hKlY-Gkdlca3Q2HE9__BXc5hNoU1Plpc56UyZ1QoaDMkRbVSi0iUUVb27GTMaTDBfmuY";
-			JwGetAutoReplyRuleAPI.getAutoReplyInfoRule(s);
-		} catch (WexinReqException e) {
-			e.printStackTrace();
-		}
 	}
 }

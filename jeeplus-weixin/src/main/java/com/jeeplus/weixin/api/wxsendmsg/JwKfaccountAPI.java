@@ -186,20 +186,5 @@ public class JwKfaccountAPI {
 		}
 		return lstWxKfaccount;
 	}
-	public static void main(String[] args){
-		try {
-			String s = "qQo8f2B0D0ZnlTP-8TKOMWoDcGiCoAhICn09S_QKxMgpSVp0VG8rgg_8PAJhy893z4lU-kY89DsZAsC3M54zxQBxuwTehg2nC_dO75VEGqw";
-			//JwTokenAPI.getAccessToken("wx00737224cb9dbc7d","b9479ebdb58d1c6b6efd4171ebe718b5");
-			List<WxKfaccount> ls = JwKfaccountAPI.getAllOnlineKfaccount(s);
-			for(WxKfaccount a : ls){
-				System.out.println(a.getKf_account()+"---"+a.getKf_id()+a.getKf_nick());
-				System.out.println(a.getKf_headimgurl());
-			}
-			
-		} catch (WexinReqException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+
 }

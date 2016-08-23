@@ -19,13 +19,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 微信--token信息
- * 
- * @author lizr
+ * 对应微信API的  "用户管理"=> "网页授权获取用户基本信息”
+ * Created by yuzp17311 on 2016/8/23.
  * 
  */
-public class JwThirdAPI {
-	private static Logger logger = LoggerFactory.getLogger(JwThirdAPI.class);
+public class OAuth2API {
+	private static Logger logger = LoggerFactory.getLogger(OAuth2API.class);
 	//获取预授权码
 	private static String api_create_preauthcode_url = "https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=COMPONENT_ACCESS_TOKEN";
 	private static String api_component_token_url = "https://api.weixin.qq.com/cgi-bin/component/api_component_token";
@@ -190,22 +189,5 @@ public class JwThirdAPI {
     	JSONObject jsonObject = WeixinHttpUtils.httpRequest(url, "POST", json.toString());
     	return jsonObject.toString();
     }
-    
-	
-	public static void main(String[] args){
-		 
-		try {
-			//String s = JwThirdAPI.getPreAuthCode("wx5412820bba6f6bd6","unisk");
-			
-			ApiComponentToken apiComponentToken = new ApiComponentToken();
-			//apiComponentToken.setComponent_appid("wx5412820bba6f6bd6");
-			apiComponentToken.setComponent_appid("??");
-			apiComponentToken.setComponent_appsecret("???");
-			apiComponentToken.setComponent_verify_ticket(null);
-			String s = JwThirdAPI.getAccessToken(apiComponentToken);
-			System.out.println(s);
-		} catch (WexinReqException e) {
-			e.printStackTrace();
-		}
-	}
+
 }

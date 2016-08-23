@@ -2,8 +2,7 @@ package com.jeeplus.weixin.api.wxbase.wxmedia.model;
 
 /**
  * 微信多媒体文件
- * @author sfli.sir
- *
+ * Created by yuzp17311 on 2016/8/23.
  */
 public class WxDwonload {
 

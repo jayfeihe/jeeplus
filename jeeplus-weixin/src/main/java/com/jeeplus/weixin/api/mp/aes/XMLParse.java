@@ -71,4 +71,6 @@ class XMLParse {
 		return String.format(format, encrypt, signature, timestamp, nonce);
 
 	}
+
+
 }
