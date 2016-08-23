@@ -21,18 +21,25 @@ import java.security.SecureRandom;
 
 
 /**
- * 微信url请求公用方法
+ * 微信Http请求公用方法
  * Created by yuzp17311 on 2016/8/22.
  */
-public class WxstoreUtils {
-    private static Logger logger= LoggerFactory.getLogger(WxstoreUtils.class);
+public class WeixinHttpUtils {
+    private static Logger logger= LoggerFactory.getLogger(WeixinHttpUtils.class);
 
+    /**
+     * 发起http请求微信服务器
+     * @param requestUrl  请求的URL路径
+     * @param requestMethod 请求的方式
+     * @param outputStr 请求的结果
+     * @return
+     */
     public static JSONObject httpRequest(String requestUrl,String requestMethod,String outputStr){
-        logger.debug("*********HTTPREQUEST START********");
-        logger.debug("*********requestUrl is "+
-                requestUrl+" END AND requestMethod IS"
-                +requestMethod + " END AND  outputStr"
-                +outputStr +" END ********");
+        logger.debug("*********发起http request请求********");
+        logger.debug("*********请求的URL是: "+
+                requestUrl+" 请求的方式是:"
+                +requestMethod + " 请求的结果是:"
+                +outputStr +" 请求结束 ********");
         JSONObject jsonObject=null;
         StringBuffer stringBuffer=new StringBuffer();
         try {
@@ -91,10 +98,10 @@ public class WxstoreUtils {
     }
 
     /**
-     *
-     * @param requestUrl
-     * @param requestMethod
-     * @param outputStr
+     * 发起http请求微信服务器
+     * @param requestUrl 请求的URL路径
+     * @param requestMethod 请求的方式
+     * @param outputStr 请求的结果
      * @return
      */
     public static JSONObject httpRequest2(String requestUrl,

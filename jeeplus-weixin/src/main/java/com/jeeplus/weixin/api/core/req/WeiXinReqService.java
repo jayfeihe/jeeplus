@@ -84,28 +84,4 @@ public class WeiXinReqService {
         return result;
     }
 
-    public static void main(String[] args) {
-        String ddd = "";
-        try {
-            // GroupGet g = new GroupGet();
-			/*
-			 * GroupUpdate g = new GroupUpdate(); Group gg = new Group();
-			 * gg.setId("111"); gg.setName("test修改"); g.setGroup(gg);*/
-            DownloadMedia g = new DownloadMedia();
-            g.setFilePath("H:/temp");
-            g.setMedia_id("nH-tzebPcZY41Hlao3mjPHpUHHJSIbfP8hbGJy73LUj5BfvVDV9b84uIpZ8Yjlzw");
-            g.setAccess_token("bbkXUUyC6F85R_vh7FOokDZn54P4jY6RVg8rvtzd0D10nIgd7Ksg7bBc8mncX6SZ1mMEI7v1q1OBtWoWG8--iR6ohe3kXbx5jUTHGAjGPAU");
-            ddd = WeiXinReqService.getInstance().doWeinxinReq(g);
-            // test.getKfaccountList("NG0cpHAPJix5bULT26Hvk9pX5ZOqleIObl9HNKUfPA2PIxJzf-X4U-YOGP4vo-rdwvCy3GCn7v9GNTXNWVM27qEQz-Xs3fgAnj0kdhL07gI");
-            // test.getServieIp("QsLy729ukRchgw4O3bQvO2UwD0vn2zQ1I0TjZa2kx-dGX9TEFuVCGd7K9AsBhdfynUAaEWVILeDNS7OQXTKZdX1YxbnNqyVBfDmW9I63WWc");
-            // test.getUploadMedia("QsLy729ukRchgw4O3bQvO2UwD0vn2zQ1I0TjZa2kx-dGX9TEFuVCGd7K9AsBhdfynUAaEWVILeDNS7OQXTKZdX1YxbnNqyVBfDmW9I63WWc");
-            // ddd =
-            // test.getDownMedia("QsLy729ukRchgw4O3bQvO2UwD0vn2zQ1I0TjZa2kx-dGX9TEFuVCGd7K9AsBhdfynUAaEWVILeDNS7OQXTKZdX1YxbnNqyVBfDmW9I63WWc");
-            System.out.println(ddd);
-        } catch (WexinReqException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-
 }

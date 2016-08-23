@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.wxstore.shelf;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.wxstore.shelf.model.Shelf;
 import com.jeeplus.weixin.api.wxstore.shelf.model.ShelfRInfo;
 import com.jeeplus.weixin.api.wxstore.shelf.model.ShelfRtnInfo;
@@ -45,7 +45,7 @@ public class JwShelfAPI {
 		if (newAccessToken != null) {
 			String requestUrl = create_shelf_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(shelf);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			ShelfRtnInfo shelfRtnInfo = (ShelfRtnInfo)JSONObject.toBean(result, ShelfRtnInfo.class);
 			return shelfRtnInfo;
 		}
@@ -61,7 +61,7 @@ public class JwShelfAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_shelf_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(shelf);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			ShelfRtnInfo shelfRtnInfo = (ShelfRtnInfo)JSONObject.toBean(result, ShelfRtnInfo.class);
 			return shelfRtnInfo;
 		}
@@ -77,7 +77,7 @@ public class JwShelfAPI {
 		if (newAccessToken != null) {
 			String requestUrl = del_shelf_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"shelf_id\": "+shelf_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			ShelfRtnInfo shelfRtnInfo = (ShelfRtnInfo)JSONObject.toBean(result, ShelfRtnInfo.class);
 			return shelfRtnInfo;
 		}
@@ -93,7 +93,7 @@ public class JwShelfAPI {
 		if (newAccessToken != null) {
 			String requestUrl = getid_shelf_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"shelf_id\": "+shelf_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			// 正常返回
 			ShelfRInfo shelfRInfo = null;
 			shelfRInfo = (ShelfRInfo)JSONObject.toBean(result, ShelfRInfo.class);
@@ -109,7 +109,7 @@ public class JwShelfAPI {
 	public static List<ShelfRInfo> getAllShelf(String newAccessToken) {
 		if (newAccessToken != null) {
 			String requestUrl = getall_shelf_url.replace("ACCESS_TOKEN", newAccessToken);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", null);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", null);
 			// 正常返回
 			List<ShelfRInfo> shelfRInfos = null;
 			JSONArray info = result.getJSONArray("shelves");

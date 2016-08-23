@@ -1,6 +1,6 @@
 package com.jeeplus.weixin.api.wxstore.stock;
 
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.wxstore.stock.model.StockInfo;
 import com.jeeplus.weixin.api.wxstore.stock.model.StockRtnInfo;
 
@@ -25,7 +25,7 @@ public class JwStockAPI {
 		if (newAccessToken != null) {
 			String requestUrl = add_stock_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(stockInfo);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			StockRtnInfo stockRtnInfo = (StockRtnInfo)JSONObject.toBean(result, StockRtnInfo.class);
 			return stockRtnInfo;
 		}
@@ -39,7 +39,7 @@ public class JwStockAPI {
 		if (newAccessToken != null) {
 			String requestUrl = sub_stock_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(stockInfo);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			StockRtnInfo stockRtnInfo = (StockRtnInfo)JSONObject.toBean(result, StockRtnInfo.class);
 			return stockRtnInfo;
 		}

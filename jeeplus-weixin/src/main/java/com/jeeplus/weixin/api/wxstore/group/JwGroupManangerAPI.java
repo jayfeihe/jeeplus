@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.wxstore.group;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.wxstore.group.model.Group;
 import com.jeeplus.weixin.api.wxstore.group.model.GroupDetailInfo;
 import com.jeeplus.weixin.api.wxstore.group.model.GroupProductInfo;
@@ -41,7 +41,7 @@ public class JwGroupManangerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = create_group_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(group);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			GroupRtnInfo groupRtnInfo = (GroupRtnInfo)JSONObject.toBean(result, GroupRtnInfo.class);
 			return groupRtnInfo;
 		}
@@ -57,7 +57,7 @@ public class JwGroupManangerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = del_group_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"group_id\": "+group_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			GroupRtnInfo groupRtnInfo = (GroupRtnInfo)JSONObject.toBean(result, GroupRtnInfo.class);
 			return groupRtnInfo;
 		}
@@ -73,7 +73,7 @@ public class JwGroupManangerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_group_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(group);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			GroupRtnInfo groupRtnInfo = (GroupRtnInfo)JSONObject.toBean(result, GroupRtnInfo.class);
 			return groupRtnInfo;
 		}
@@ -89,7 +89,7 @@ public class JwGroupManangerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_productmod_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(groupProductInfo);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			GroupRtnInfo groupRtnInfo = (GroupRtnInfo)JSONObject.toBean(result, GroupRtnInfo.class);
 			return groupRtnInfo;
 		}
@@ -103,7 +103,7 @@ public class JwGroupManangerAPI {
 	public static List<GroupDetailInfo> getAllGroup(String newAccessToken) {
 		if (newAccessToken != null) {
 			String requestUrl = getall_group_url.replace("ACCESS_TOKEN", newAccessToken);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", null);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", null);
 			// 正常返回
 			List<GroupDetailInfo> groupsDetailInfo = null;
 			JSONArray info = result.getJSONArray("groups_detail");
@@ -121,7 +121,7 @@ public class JwGroupManangerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = getid_group_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"group_id\": "+group_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			// 正常返回
 			GroupDetailInfo groupDetailInfo = null;
 			JSONObject info = result.getJSONObject("group_detail");

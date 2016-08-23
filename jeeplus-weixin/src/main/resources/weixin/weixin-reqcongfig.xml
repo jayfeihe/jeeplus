@@ -2,16 +2,16 @@
 <weixin-req>
     <req key="access_token" method="get" url="https://api.weixin.qq.com/cgi-bin/token?1=1"></req>
     <req key="getcallbackip" method="get" url="https://api.weixin.qq.com/cgi-bin/getcallbackip?1=1"></req>
-    <req key="mediaUpload" method="post" mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqMediaUploadHandler" 
+    <req key="mediaUpload" method="post" mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqMediaUploadHandler"
     	 url="http://file.api.weixin.qq.com/cgi-bin/media/upload?1=1"></req>
-    <req key="mediaget" method="get" mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqMediaDownHandler" 
+    <req key="mediaget" method="get" mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqMediaDownHandler"
          url="http://file.api.weixin.qq.com/cgi-bin/media/get?1=1"></req>
     
     <!-- 客服接口 -->
     <req key="kfaccountAdd" method="post" datatype="json" url="https://api.weixin.qq.com/customservice/kfaccount/add?1=1"></req>
     <req key="kfaccountUpdate" method="post" datatype="json" url="https://api.weixin.qq.com/customservice/kfaccount/update?1=1"></req>
     <req key="kfaccountDel" method="post" datatype="json" url="https://api.weixin.qq.com/customservice/kfacount/del?1=1"></req>
-    <req key="kfaccountUploadheadimg" method="post" mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqMediaUploadHandler" 
+    <req key="kfaccountUploadheadimg" method="post" mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqMediaUploadHandler"
     	 url="http://api.weixin.qq.com/customservice/kfacount/uploadheadimg?1=1"></req>
     <req key="getkflist" method="get" url="https://api.weixin.qq.com/cgi-bin/customservice/getkflist?1=1"></req>
     <req key="getonlinekflist" method="get" url="https://api.weixin.qq.com/cgi-bin/customservice/getonlinekflist?1=1"></req>
@@ -22,7 +22,7 @@
     <req key="industryTemplateAdd" method="post" datatype="json" url="https://api.weixin.qq.com/cgi-bin/template/api_add_template?1=1"></req>
     
     <req key="industryTemplateMessageSend" method="post" datatype="json" url="https://api.weixin.qq.com/cgi-bin/message/template/send?1=1"
-    	mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqTemplateMessageHandler"></req>
+    	mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqTemplateMessageHandler"></req>
     <!-- update begin Author:luobaoli  Date:20150715 for：增加“获取自动回复规则”功能接口 -->
     <req key="autoReplyRuleGet" method="post" datatype="json" url="https://api.weixin.qq.com/cgi-bin/get_current_autoreply_info?1=1"></req>
     <!-- update end Author:luobaoli  Date:20150715 for：增加“获取自动回复规则”功能接口  -->
@@ -45,7 +45,7 @@
     <req key="groupDelete" method="post" datatype="json" url="https://api.weixin.qq.com/cgi-bin/groups/delete?1=1"></req>
     
     <!-- 菜单管理 -->
-    <req key="menuCreate" method="post" datatype="json" mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqMenuCreateHandler"
+    <req key="menuCreate" method="post" datatype="json" mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqMenuCreateHandler"
     			url=" https://api.weixin.qq.com/cgi-bin/menu/create?1=1"></req>
     <req key="menuGet" method="get" datatype="param" url=" https://api.weixin.qq.com/cgi-bin/menu/get?1=1"></req>
     <req key="menuDelete" method="get" datatype="param" url=" https://api.weixin.qq.com/cgi-bin/menu/delete?1=1"></req>
@@ -59,7 +59,7 @@
     <!-- 微信卡券 -->
     <req key="getGrcodeInfo" method="post" datatype="json" url="https://api.weixin.qq.com/card/qrcode/create?1=1"></req>
     <req key="getGetticket" method="get" datatype="json" url="https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=wx_card"></req>
-    <req key="getLocationInfo" method="post" mappingHandler="org.jeewx.api.core.handler.impl.WeixinReqLogoUploadHandler" 
+    <req key="getLocationInfo" method="post" mappingHandler="com.jeeplus.weixin.api.core.handler.impl.WeixinReqLogoUploadHandler"
     	 url="https://api.weixin.qq.com/cgi-bin/media/uploadimg?1=1"></req>
     <req key="getBatchadd" method="post" datatype="json" url="https://api.weixin.qq.com/card/location/batchadd?1=1"></req>
     <req key="getBatchget" method="post" datatype="json" url="https://api.weixin.qq.com/card/location/batchget?1=1"></req>

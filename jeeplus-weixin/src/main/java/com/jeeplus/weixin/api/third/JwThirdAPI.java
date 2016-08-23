@@ -3,9 +3,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import net.sf.json.JSONObject;
 
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
 import com.jeeplus.weixin.api.core.exception.WexinReqException;
 import com.jeeplus.weixin.api.third.model.ApiAuthorizerToken;
 import com.jeeplus.weixin.api.third.model.ApiAuthorizerTokenRet;
@@ -51,7 +51,7 @@ public class JwThirdAPI {
 		String component_access_token = "";
 		String requestUrl = api_component_token_url;
 		JSONObject obj = JSONObject.fromObject(apiComponentToken);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 		if (result.has("errcode")) {
 			logger.error("获取第三方平台access_token！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
 			throw new WexinReqException("获取第三方平台access_token！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -74,7 +74,7 @@ public class JwThirdAPI {
 		GetPreAuthCodeParam getPreAuthCodeParam = new GetPreAuthCodeParam();
 		getPreAuthCodeParam.setComponent_appid(component_appid);
 		JSONObject obj = JSONObject.fromObject(getPreAuthCodeParam);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 		if (result.has("errcode")) {
 			logger.error("获取权限令牌信息！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
 			throw new WexinReqException("获取权限令牌信息！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -98,7 +98,7 @@ public class JwThirdAPI {
 		mp.put("authorization_code", authorization_code);
 		JSONObject obj = JSONObject.fromObject(mp);
 		System.out.println("-------------------3、使用授权码换取公众号的授权信息---requestUrl------------------------"+requestUrl);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"POST", obj.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"POST", obj.toString());
 		if (result.has("errcode")) {
 			logger.error("获取第三方平台access_token！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
 			throw new WexinReqException("获取第三方平台access_token！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -115,7 +115,7 @@ public class JwThirdAPI {
 	public static ApiAuthorizerTokenRet apiAuthorizerToken(ApiAuthorizerToken apiAuthorizerToken,String component_access_token) throws WexinReqException{
 		String requestUrl = api_authorizer_token_url.replace("COMPONENT_ACCESS_TOKEN", component_access_token);
 		JSONObject param = JSONObject.fromObject(apiAuthorizerToken);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"POST", param.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"POST", param.toString());
 		ApiAuthorizerTokenRet apiAuthorizerTokenRet = (ApiAuthorizerTokenRet)JSONObject.toBean(result, ApiAuthorizerTokenRet.class);
 		return apiAuthorizerTokenRet;
 	}
@@ -125,7 +125,7 @@ public class JwThirdAPI {
 	public static ApiGetAuthorizerRet apiGetAuthorizerInfo(ApiGetAuthorizer apiGetAuthorizer,String component_access_token) throws WexinReqException{
 		String requestUrl = api_get_authorizer_info_url.replace("COMPONENT_ACCESS_TOKEN", component_access_token);
 		JSONObject param = JSONObject.fromObject(apiGetAuthorizer);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"POST", param.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"POST", param.toString());
 		ApiGetAuthorizerRet apiGetAuthorizerRet = (ApiGetAuthorizerRet)JSONObject.toBean(result, ApiGetAuthorizerRet.class);
 		return apiGetAuthorizerRet;
 	}
@@ -136,7 +136,7 @@ public class JwThirdAPI {
 	public static AuthorizerOptionRet apiGetAuthorizerOption(AuthorizerOption authorizerOption,String component_access_token) throws WexinReqException{
 		String requestUrl = api_get_authorizer_option_url.replace("COMPONENT_ACCESS_TOKEN", component_access_token);
 		JSONObject param = JSONObject.fromObject(authorizerOption);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"POST", param.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"POST", param.toString());
 		AuthorizerOptionRet authorizerOptionRet = (AuthorizerOptionRet)JSONObject.toBean(result, AuthorizerOptionRet.class);
 		return authorizerOptionRet;
 	}
@@ -146,7 +146,7 @@ public class JwThirdAPI {
 	public static AuthorizerSetOptionRet apiSetAuthorizerOption(AuthorizerSetOption authorizerSetOption,String component_access_token) throws WexinReqException{
 		String requestUrl = api_set_authorizer_option_url.replace("COMPONENT_ACCESS_TOKEN", component_access_token);
 		JSONObject param = JSONObject.fromObject(authorizerSetOption);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"POST", param.toString());
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"POST", param.toString());
 		AuthorizerSetOptionRet authorizerSetOptionRet = (AuthorizerSetOptionRet)JSONObject.toBean(result, AuthorizerSetOptionRet.class);
 		return authorizerSetOptionRet;
 	}
@@ -166,7 +166,7 @@ public class JwThirdAPI {
 	 */
 	public static ReOpenAccessToken getAccessTokenByCode(String appid,String code,String grant_type,String component_appid,String component_access_token) throws WexinReqException{
 		String requestUrl = get_access_token_bycode_url.replace("COMPONENT_APPID", component_appid).replace("COMPONENT_ACCESS_TOKEN", component_access_token).replace("authorization_code", grant_type).replace("CODE", code).replace("APPID", appid);
-		JSONObject result = WxstoreUtils.httpRequest(requestUrl,"GET", null);
+		JSONObject result = WeixinHttpUtils.httpRequest(requestUrl,"GET", null);
 		ReOpenAccessToken reOpenAccessToken = (ReOpenAccessToken)JSONObject.toBean(result, OrderInfo.class);
 		if (result.has("errcode")) {
 			logger.error("获取第三方平台access_token！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -187,7 +187,7 @@ public class JwThirdAPI {
     	System.out.println("--------发送客服消息---------json-----"+json.toString());
     	// 调用接口获取access_token
     	String url = send_message_url.replace("ACCESS_TOKEN",ACCESS_TOKEN);
-    	JSONObject jsonObject = WxstoreUtils.httpRequest(url, "POST", json.toString());
+    	JSONObject jsonObject = WeixinHttpUtils.httpRequest(url, "POST", json.toString());
     	return jsonObject.toString();
     }
     

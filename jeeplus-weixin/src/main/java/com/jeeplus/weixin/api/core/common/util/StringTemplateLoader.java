@@ -9,9 +9,8 @@ import java.util.Map;
 import freemarker.cache.TemplateLoader;
 
 /**
- * 
- * @author 张代浩
- *
+ * 模版加载接口的实现
+ * Created by yuzp17311 on 2016/8/22.
  */
 public class StringTemplateLoader implements TemplateLoader {
 
@@ -24,6 +23,11 @@ public class StringTemplateLoader implements TemplateLoader {
 			}
 		}
 
+	/**
+	 * 新增模版
+	 * @param name 名称
+	 * @param template 模版
+	 */
 		public void AddTemplate(String name, String template) {
 			if (name == null || template == null || name.equals("")
 					|| template.equals("")) {
@@ -34,11 +38,22 @@ public class StringTemplateLoader implements TemplateLoader {
 			}
 		}
 
+	/**
+	 * 关闭模版
+	 * @param templateSource 模版源
+	 * @throws IOException
+	 */
 		public void closeTemplateSource(Object templateSource)
 				throws IOException {
 
 		}
 
+	/**
+	 * 查找模版
+	 * @param name  名称
+	 * @return
+	 * @throws IOException
+	 */
 		public Object findTemplateSource(String name) throws IOException {
 			if (name == null || name.equals("")) {
 				name = DEFAULT_TEMPLATE_KEY;

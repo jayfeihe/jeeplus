@@ -7,7 +7,7 @@ import java.util.List;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang3.StringUtils;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.core.exception.WexinReqException;
 import com.jeeplus.weixin.api.core.req.WeiXinReqService;
 import com.jeeplus.weixin.api.core.req.model.DownloadMedia;
@@ -143,7 +143,7 @@ public class JwMediaAPI {
 				WxArticlesRequest wxArticlesRequest = new WxArticlesRequest();
 				wxArticlesRequest.setArticles(wxArticles);
 				JSONObject obj = JSONObject.fromObject(wxArticlesRequest);
-				JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+				JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 				//System.out.println("微信返回的结果：" + result.toString());
 				if (result.has("errcode")) {
 					logger.error("上传图文消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -177,7 +177,7 @@ public class JwMediaAPI {
 		if (accesstoken != null) {
 			String requestUrl = material_get_materialcount_url.replace("ACCESS_TOKEN", accesstoken);
 
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST",null);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST",null);
 			//System.out.println("微信返回的结果：" + result.toString());
 			if (result.has("errcode")) {
 				logger.error("上传图文消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -211,7 +211,7 @@ public class JwMediaAPI {
 				WxArticlesRequestByMaterial wxArticlesRequestByMaterial = new WxArticlesRequestByMaterial();
 				wxArticlesRequestByMaterial.setMediaId(mediaId);
 				JSONObject obj = JSONObject.fromObject(wxArticlesRequestByMaterial);
-				JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+				JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 				//System.out.println("微信返回的结果：" + result.toString());
 				if (result.has("errcode")) {
 					logger.error("获得消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -239,7 +239,7 @@ public class JwMediaAPI {
 				WxArticlesRequestByMaterial wxArticlesRequestByMaterial = new WxArticlesRequestByMaterial();
 				wxArticlesRequestByMaterial.setMediaId(mediaId);
 				JSONObject obj = JSONObject.fromObject(wxArticlesRequestByMaterial);
-				JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+				JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 				//System.out.println("微信返回的结果：" + result.toString());
 				if (result.has("errcode")&&result.get("errcode")!="0") {
 					logger.error("删除消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -260,7 +260,7 @@ public class JwMediaAPI {
 			String requestUrl = material_update_news_url.replace("ACCESS_TOKEN", accesstoken);
 			
 			JSONObject obj = JSONObject.fromObject(wxUpdateArticle);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			//System.out.println("微信返回的结果：" + result.toString());
 			if (result.has("errcode")&&result.get("errcode")!="0") {
 				logger.error("消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -285,7 +285,7 @@ public class JwMediaAPI {
 			obj.put("type", type);
 			obj.put("offset", offset);
 			obj.put("count", count);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			//System.out.println("微信返回的结果：" + result.toString());
 			if (result.has("errcode")&&result.get("errcode")!="0") {
 				logger.error("消息失败！errcode=" + result.getString("errcode") + ",errmsg = " + result.getString("errmsg"));
@@ -327,12 +327,12 @@ public class JwMediaAPI {
 
 			File file = new File(wx.getFilePath() + wx.getFileName());
 			String contentType = WeiXinReqUtil.getFileContentType(wx.getFileName().substring(wx.getFileName().lastIndexOf(".") + 1));
-			JSONObject result = WxstoreUtils.uploadMediaFile(requestUrl, file, contentType);
+			JSONObject result = WeixinHttpUtils.uploadMediaFile(requestUrl, file, contentType);
 			if("video"==wx.getType()){
 				WxDescriptionRequest wr = new WxDescriptionRequest();
 				wr.setDescription(wx.getWxDescription());
 				JSONObject obj = JSONObject.fromObject(wr);
-				WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+				WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			}
 			
 			//System.out.println("微信返回的结果：" + result.toString());

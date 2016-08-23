@@ -2,13 +2,13 @@ package com.jeeplus.weixin.api.report.interfacesummary;
 
 import java.util.List;
 
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.jeeplus.weixin.api.core.req.model.interfacesummary.InterfaceSummaryParam;
 import com.jeeplus.weixin.api.core.common.AccessToken;
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
 import com.jeeplus.weixin.api.report.interfacesummary.model.InterfaceSummary;
 import com.jeeplus.weixin.api.report.interfacesummary.model.InterfaceSummaryHour;
 
@@ -34,7 +34,7 @@ public class JwInterfaceSummaryAPI {
 			param.setAccess_token(accesstoken);
 			String requestUrl = getinterfacesummaryhour_url.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(param);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", obj.toString());
 			// 正常返回
 			List<InterfaceSummaryHour> list = null;
 			JSONArray info = result.getJSONArray("list");
@@ -54,7 +54,7 @@ public class JwInterfaceSummaryAPI {
 			param.setAccess_token(accesstoken);
 			String requestUrl = getinterfacesummary_url.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(param);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", obj.toString());
 			// 正常返回
 			List<InterfaceSummary> list = null;
 			JSONArray info = result.getJSONArray("list");

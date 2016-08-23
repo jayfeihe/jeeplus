@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.report.datacube;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.core.exception.WexinReqException;
 import com.jeeplus.weixin.api.core.req.model.dataCube.*;
 import com.jeeplus.weixin.api.report.datacube.model.*;
@@ -51,7 +51,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSG_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 			
 			// 无错误消息时 返回数据对象
@@ -84,7 +84,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSGHOUR_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 
 			// 无错误消息时 返回数据对象
@@ -116,7 +116,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSGWEEK_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 
 			// 无错误消息时 返回数据对象
@@ -148,7 +148,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSGMONTH_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 
 			// 无错误消息时 返回数据对象
@@ -181,7 +181,7 @@ public class JwDataCubeAPI {
 			String requestUrl = GETUPSTREAMMSGDIST_URL.replace("ACCESS_TOKEN",
 					accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST",
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST",
 					obj.toString());
 
 			// 无错误消息时 返回数据对象
@@ -215,7 +215,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSGDISTWEEK_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 
 			// 无错误消息时 返回数据对象
@@ -247,7 +247,7 @@ public class JwDataCubeAPI {
 			// 调用接口
 			String requestUrl = GETUPSTREAMMSGDISTMONTH_URL.replace("ACCESS_TOKEN", accesstoken);
 			JSONObject obj = JSONObject.fromObject(msgParam);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			Object error = result.get("errcode");
 
 			// 无错误消息时 返回数据对象

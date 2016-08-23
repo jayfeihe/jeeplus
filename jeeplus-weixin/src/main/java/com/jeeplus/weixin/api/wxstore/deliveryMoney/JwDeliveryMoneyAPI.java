@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.wxstore.deliveryMoney;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.wxstore.deliveryMoney.model.DeliveryMoney;
 import com.jeeplus.weixin.api.wxstore.deliveryMoney.model.DeliveryMoneyRtnInfo;
 
@@ -37,7 +37,7 @@ public class JwDeliveryMoneyAPI {
 		if (newAccessToken != null) {
 			String requestUrl = create_postage_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(postage);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			DeliveryMoneyRtnInfo postageRtnInfo = (DeliveryMoneyRtnInfo)JSONObject.toBean(result, DeliveryMoneyRtnInfo.class);
 			return postageRtnInfo;
 		}
@@ -53,7 +53,7 @@ public class JwDeliveryMoneyAPI {
 		if (newAccessToken != null) {
 			String requestUrl = del_postage_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"template_id\": "+template_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			DeliveryMoneyRtnInfo postageRtnInfo = (DeliveryMoneyRtnInfo)JSONObject.toBean(result, DeliveryMoneyRtnInfo.class);
 			return postageRtnInfo;
 		}
@@ -69,7 +69,7 @@ public class JwDeliveryMoneyAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_postage_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(postage);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			DeliveryMoneyRtnInfo postageRtnInfo = (DeliveryMoneyRtnInfo)JSONObject.toBean(result, DeliveryMoneyRtnInfo.class);
 			return postageRtnInfo;
 		}
@@ -85,7 +85,7 @@ public class JwDeliveryMoneyAPI {
 		if (newAccessToken != null) {
 			String requestUrl = get_postage_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"template_id\": "+template_id+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			// 正常返回
 			DeliveryMoney postage = null;
 			JSONObject info = result.getJSONObject("template_info");
@@ -102,7 +102,7 @@ public class JwDeliveryMoneyAPI {
 	public static List<DeliveryMoney> getAllExpress(String newAccessToken) {
 		if (newAccessToken != null) {
 			String requestUrl = getall_postage_url.replace("ACCESS_TOKEN", newAccessToken);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", "");
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", "");
 			// 正常返回
 			List<DeliveryMoney> postages = null;
 			JSONArray info = result.getJSONArray("templates_info");

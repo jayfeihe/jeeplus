@@ -9,5 +9,5 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ReqType {
-    public String value() default "";
+     String value() default "";
 }

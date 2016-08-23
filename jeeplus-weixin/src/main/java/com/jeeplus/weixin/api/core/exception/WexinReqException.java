@@ -1,7 +1,7 @@
 package com.jeeplus.weixin.api.core.exception;
 
 /**
- * 常规异常信息
+ * 微信http请求异常信息
  * Created by yuzp17311 on 2016/8/22.
  */
 public class WexinReqException extends Exception {

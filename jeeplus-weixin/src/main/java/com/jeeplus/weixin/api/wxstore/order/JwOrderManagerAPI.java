@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.wxstore.order;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.wxstore.order.model.OrderDelivery;
 import com.jeeplus.weixin.api.wxstore.order.model.OrderInfo;
 import com.jeeplus.weixin.api.wxstore.order.model.OrderPara;
@@ -37,7 +37,7 @@ public class JwOrderManagerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = getid_order_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"order_id\": \""+order_id+"\"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			// 正常返回
 			OrderInfo orderInfo = null;
 			JSONObject info = result.getJSONObject("order");
@@ -56,7 +56,7 @@ public class JwOrderManagerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = getfilter_order_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(orderPara);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", obj.toString());
 			// 正常返回
 			List<OrderInfo> orderInfos = null;
 			JSONArray info = result.getJSONArray("order_list");
@@ -75,7 +75,7 @@ public class JwOrderManagerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = setdelivery_order_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(orderDelivery);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			OrderRtnInfo orderRtnInfo = (OrderRtnInfo)JSONObject.toBean(result, OrderRtnInfo.class);
 			return orderRtnInfo;
 		}
@@ -91,7 +91,7 @@ public class JwOrderManagerAPI {
 		if (newAccessToken != null) {
 			String requestUrl = close_order_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"order_id\": \""+order_id+"\"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			OrderRtnInfo orderRtnInfo = (OrderRtnInfo)JSONObject.toBean(result, OrderRtnInfo.class);
 			return orderRtnInfo;
 		}

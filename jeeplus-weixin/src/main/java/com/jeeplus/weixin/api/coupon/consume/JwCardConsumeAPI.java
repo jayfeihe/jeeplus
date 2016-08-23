@@ -1,6 +1,6 @@
 package com.jeeplus.weixin.api.coupon.consume;
 
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.coupon.consume.model.ConsumeRtnInfo;
 import com.jeeplus.weixin.api.coupon.consume.model.EncryptRtnInfo;
 import net.sf.json.JSONObject;
@@ -30,7 +30,7 @@ public class JwCardConsumeAPI {
 			String requestUrl = consume_code_url.replace("ACCESS_TOKEN",
 					newAccessToken);
 			String json = emptyStrJson("code",code,"card_id",card_id);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			ConsumeRtnInfo consumeRtnInfo = (ConsumeRtnInfo) JSONObject.toBean(
 					result, ConsumeRtnInfo.class);
 			return consumeRtnInfo;
@@ -49,7 +49,7 @@ public class JwCardConsumeAPI {
 			String requestUrl = decrypt_code_url.replace("ACCESS_TOKEN",
 					newAccessToken);
 			String json = emptyStrJson("encrypt_code",encrypt_code);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			EncryptRtnInfo encryptRtnInfo = (EncryptRtnInfo) JSONObject.toBean(
 					result, EncryptRtnInfo.class);
 			return encryptRtnInfo;

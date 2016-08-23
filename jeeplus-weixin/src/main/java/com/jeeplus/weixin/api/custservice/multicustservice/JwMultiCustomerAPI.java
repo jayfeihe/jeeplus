@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.jeeplus.weixin.api.core.common.JSONHelper;
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.custservice.multicustservice.model.ChatRecord;
 import com.jeeplus.weixin.api.custservice.multicustservice.model.CustService;
 import net.sf.json.JSONArray;
@@ -82,7 +82,7 @@ public class JwMultiCustomerAPI {
         List<CustService> custServices = null;
         if (accessToken != null) {
             String requestUrl = GET_ONLINE_CUSTSEVICE_URL.replace("ACCESS_TOKEN", accessToken);
-            JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET", null);
+            JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET", null);
             if(result != null){
                 JSONArray info = result.getJSONArray("kf_online_list");
                 custServices = JSONHelper.toList(info, CustService.class);
@@ -131,7 +131,7 @@ public class JwMultiCustomerAPI {
             jsonStrBuilder.append("\"pageindex\":"+pageIndex+",");  
             jsonStrBuilder.append("}");              
             
-            JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", jsonStrBuilder.toString());
+            JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", jsonStrBuilder.toString());
             if(result != null){
                 JSONArray info = result.getJSONArray("recordlist");
                 chatRecods = JSONHelper.toList(info, ChatRecord.class);

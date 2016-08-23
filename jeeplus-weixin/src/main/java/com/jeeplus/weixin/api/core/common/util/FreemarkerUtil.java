@@ -14,12 +14,9 @@ import freemarker.template.Template;
 ;
 
 /**
- * 
- * @Title:FreemarkerHelper
+ *
  * @description:Freemarker引擎协助类
- * @author 赵俊夫
- * @date Jul 5, 2013 2:58:29 PM
- * @version V1.0
+ * Created by yuzp17311 on 2016/8/22.
  */
 public class FreemarkerUtil {
 	private static Configuration _tplConfig = new Configuration();
@@ -46,7 +43,7 @@ public class FreemarkerUtil {
 	 * @param encoding
 	 *            编码
 	 * @param paras
-	 *            参数
+	 *            参数Map
 	 * @return
 	 */
 	public String parseTemplate(String tplName, String encoding,
@@ -63,7 +60,13 @@ public class FreemarkerUtil {
 		}
 
 	}
-	
+
+    /**
+     * 生成静态页
+     * @param tplPath 模版路径
+     * @param tplName 模版名
+     * @param paras 参数Map
+     */
 	public void genStaticPage(String tplPath, String tplName,
 			Map<String, Object> paras) {
 		Writer out = null;
@@ -86,6 +89,12 @@ public class FreemarkerUtil {
 
 	}
 
+    /**
+     * 解析模版
+     * @param tplName 模版名
+     * @param paras  参数Map
+     * @return
+     */
 	public String parseTemplate(String tplName, Map<String, Object> paras) {
 		return this.parseTemplate(tplName, "utf-8", paras);
 	}

@@ -1,6 +1,6 @@
 package com.jeeplus.weixin.api.coupon.manage;
 
-import com.jeeplus.weixin.api.core.common.WxstoreUtils;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
 import com.jeeplus.weixin.api.coupon.manage.model.*;
 import net.sf.json.JSONObject;
 
@@ -36,7 +36,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = del_card_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"card_id\": \""+card_id+"\"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			DelRtnInfo delRtnInfo = (DelRtnInfo)JSONObject.toBean(result, DelRtnInfo.class);
 			return delRtnInfo;
 		}
@@ -50,7 +50,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = get_card_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = emptyStrJson("code",code,"card_id",card_id);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			GetCardRtnInfo getCardRtnInfo = (GetCardRtnInfo)JSONObject.toBean(result, GetCardRtnInfo.class);
 			return getCardRtnInfo;
 		}
@@ -65,7 +65,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = batchget_card_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"offset\":"+offset+",\"count\": "+count+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			BatchGetCardRtnInfo batchGetCardRtnInfo = (BatchGetCardRtnInfo)JSONObject.toBean(result, BatchGetCardRtnInfo.class);
 			return batchGetCardRtnInfo;
 		}
@@ -78,7 +78,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = get_card_detail_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"card_id\":\""+card_id+"\"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			GetCardDetailRtnInfo getCardDetailRtnInfo = (GetCardDetailRtnInfo)JSONObject.toBean(result, GetCardDetailRtnInfo.class);
 			return getCardDetailRtnInfo;
 		}
@@ -97,7 +97,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_code_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = emptyStrJson("code",code,"card_id",card_id,"new_code",new_code);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			CommCardRtnInfo commCardRtnInfo = (CommCardRtnInfo)JSONObject.toBean(result, CommCardRtnInfo.class);
 			return commCardRtnInfo;
 		}
@@ -114,7 +114,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = unavailable_code_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = emptyStrJson("code",code,"card_id",card_id);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			CommCardRtnInfo commCardRtnInfo = (CommCardRtnInfo)JSONObject.toBean(result, CommCardRtnInfo.class);
 			return commCardRtnInfo;
 		}
@@ -129,7 +129,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = update_card_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(cardUpdate);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST",
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST",
 					obj.toString());
 			CommCardRtnInfo commCardRtnInfo = (CommCardRtnInfo)JSONObject.toBean(result, CommCardRtnInfo.class);
 			return commCardRtnInfo;
@@ -147,7 +147,7 @@ public class JwCardManageAPI {
 		if (newAccessToken != null) {
 			String requestUrl = modifystock_card_url.replace("ACCESS_TOKEN", newAccessToken);
 			String json = "{\"card_id\":\""+card_id+"\",\"increase_stock_value\": "+increase_stock_value+",\"reduce_stock_value\": "+reduce_stock_value+"}";
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", json);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", json);
 			CommCardRtnInfo commCardRtnInfo = (CommCardRtnInfo)JSONObject.toBean(result, CommCardRtnInfo.class);
 			return commCardRtnInfo;
 		}
