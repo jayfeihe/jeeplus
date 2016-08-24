@@ -39,7 +39,8 @@ import org.xml.sax.InputSource;
 		public static String timestamp = "1409304348";
 		
 		
-		/*
+		/**
+         *密文
 		 *@param token: 第三方平台申请时填写的接收消息的校验token
 		 *@param encodingAesKey: 公众号第三方平台的 EncodingAESKey（申请公众号第三方平台时填写的接收消息的加密symmetric_key）
 		 *@param appId: 公众号第三方平台的appid
@@ -53,7 +54,7 @@ import org.xml.sax.InputSource;
 		}
 		
 		/*
-		 *@param minwen: 秘文
+		 *@param minwen: 明文
 		 *@param token: 第三方平台申请时填写的接收消息的校验token
 		 *@param encodingAesKey: 公众号第三方平台的 EncodingAESKey（申请公众号第三方平台时填写的接收消息的加密symmetric_key）
 		 *@param appId: 公众号第三方平台的appid
