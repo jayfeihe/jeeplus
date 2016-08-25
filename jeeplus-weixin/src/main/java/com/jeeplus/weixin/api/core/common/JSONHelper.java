@@ -286,7 +286,7 @@ public final class JSONHelper {
             while (it.hasNext()) {
                 String key = (String) it.next();
                 Object value = jsonObject.get(key);
-                map.put((String) key, value);
+                map.put(key, value);
             }
             list.add(map);
         }
@@ -489,7 +489,7 @@ public final class JSONHelper {
         T mainEntity = JSONHelper.toBean(jsonObject, mainClass);
         for (Object key : detailClass.keySet()) {
             try {
-                Class value = (Class) detailClass.get(key);
+                Class value = detailClass.get(key);
                 BeanUtils.setProperty(mainEntity, key.toString(), value);
             } catch (Exception ex) {
                 throw new RuntimeException("主从关系JSON反序列化实体失败！");

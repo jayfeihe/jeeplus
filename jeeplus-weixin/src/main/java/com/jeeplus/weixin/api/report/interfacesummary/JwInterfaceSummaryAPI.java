@@ -74,7 +74,7 @@ public class JwInterfaceSummaryAPI {
 		param.setEnd_date("2015-01-01");
 		
 		//List<InterfaceSummary> list = s.getInterfaceSummary(param);
-		List<InterfaceSummaryHour> list = s.getInterfaceSummaryHour("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g",param);
+		List<InterfaceSummaryHour> list = getInterfaceSummaryHour("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g",param);
 		
 		for (InterfaceSummaryHour bean : list) {
 			System.out.println(bean.getRef_date()); 

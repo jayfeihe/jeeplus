@@ -91,7 +91,7 @@ public class JwMultiCustomerAPI {
        
         if(custServices!=null&&!custServices.isEmpty()){
             for(Iterator<CustService> it = custServices.iterator();it.hasNext();){
-                CustService custService = (CustService)it.next();
+                CustService custService = it.next();
                 //不在线、没有开启自动接入或者自动接入已满,都返回不可用
                 if (custService != null && custService.getKfAccount().equals(kfAccount)
                         && custService.getAutoAccept() > 0

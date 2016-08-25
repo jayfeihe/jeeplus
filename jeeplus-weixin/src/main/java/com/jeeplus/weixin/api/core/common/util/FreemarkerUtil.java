@@ -11,8 +11,6 @@ import java.util.Map;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
-;
-
 /**
  *
  * @description:Freemarker引擎协助类

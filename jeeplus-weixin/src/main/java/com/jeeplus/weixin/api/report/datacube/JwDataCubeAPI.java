@@ -290,7 +290,7 @@ public class JwDataCubeAPI {
 		System.out.println("test getWxDataCubeStreamMsgInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgInfo> msgInfoList = s.getWxDataCubeStreamMsgInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-07");
+			List<WxDataCubeStreamMsgInfo> msgInfoList = getWxDataCubeStreamMsgInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-07");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getMsg_count()); 
@@ -312,7 +312,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgHourInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgHourInfo> msgInfoList = s.getWxDataCubeStreamMsgHourInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-07","2015-01-07");
+			List<WxDataCubeStreamMsgHourInfo> msgInfoList = getWxDataCubeStreamMsgHourInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-07","2015-01-07");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgHourInfo wxDataCubeStreamMsghourInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsghourInfo.getMsg_count()); 
@@ -335,7 +335,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgWeekInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgWeekInfo> msgInfoList = s.getWxDataCubeStreamMsgWeekInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-07");
+			List<WxDataCubeStreamMsgWeekInfo> msgInfoList = getWxDataCubeStreamMsgWeekInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-07");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgWeekInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getMsg_count()); 
@@ -357,7 +357,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgMonthInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgMonthInfo> msgInfoList = s.getWxDataCubeStreamMsgMonthInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2014-01-01","2015-01-30");
+			List<WxDataCubeStreamMsgMonthInfo> msgInfoList = getWxDataCubeStreamMsgMonthInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2014-01-01","2015-01-30");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgMonthInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getMsg_count()); 
@@ -379,7 +379,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgDistInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgDistInfo> msgInfoList = s.getWxDataCubeStreamMsgDistInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
+			List<WxDataCubeStreamMsgDistInfo> msgInfoList = getWxDataCubeStreamMsgDistInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgDistInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getRef_date()); 
@@ -401,7 +401,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgDistWeekInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgDistWeekInfo> msgInfoList = s.getWxDataCubeStreamMsgDistWeekInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
+			List<WxDataCubeStreamMsgDistWeekInfo> msgInfoList = getWxDataCubeStreamMsgDistWeekInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgDistWeekInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getRef_date()); 
@@ -423,7 +423,7 @@ public class JwDataCubeAPI {
 		System.out.println("test testGetWxDataCubeStreamMsgDistMonthInfo start ");
 		JwDataCubeAPI s = new JwDataCubeAPI();
 		try {
-			List<WxDataCubeStreamMsgDistMonthInfo> msgInfoList = s.getWxDataCubeStreamMsgDistMonthInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
+			List<WxDataCubeStreamMsgDistMonthInfo> msgInfoList = getWxDataCubeStreamMsgDistMonthInfo("a8UEhkxmxN269afPJ7SuY9vVroHPYiwm9Yv5gu_yK4GGsA60IafJ3N9We4ubabgZ4lsl4kd0zqcH7JC70UsQ951Ndur4ejSIz7VvroBJn4g","2015-01-01","2015-01-15");
 			if(msgInfoList!=null&&msgInfoList.size()>0){
 				for (WxDataCubeStreamMsgDistMonthInfo wxDataCubeStreamMsgInfo : msgInfoList) {
 					System.out.println(wxDataCubeStreamMsgInfo.getRef_date()); 

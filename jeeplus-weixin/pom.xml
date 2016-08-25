@@ -42,12 +42,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- baidubcs -->
-        <dependency>
-            <groupId>com.baidu.bcs</groupId>
-            <artifactId>baidu-sdk</artifactId>
-            <version>1.4.5</version>
-        </dependency>
         <!-- qiniu-bcs -->
         <dependency>
             <groupId>com.qiniu</groupId>

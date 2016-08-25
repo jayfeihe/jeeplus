@@ -19,9 +19,8 @@ public class CustomJsonConfig extends JsonConfig{
 		setRootClass(clazz);
 		setJavaPropertyFilter(new PropertyFilter() {
 			public boolean apply(Object arg0, String param, Object arg2) {
-				if(param.equals(exclude))return true;
-				return false;
-			}
+                return param.equals(exclude);
+            }
 		});
 	}
 	

@@ -89,7 +89,7 @@ public class JwDeliveryMoneyAPI {
 			// 正常返回
 			DeliveryMoney postage = null;
 			JSONObject info = result.getJSONObject("template_info");
-			postage = (DeliveryMoney)JSONHelper.toBean(info, DeliveryMoney.class);
+			postage = JSONHelper.toBean(info, DeliveryMoney.class);
 			return postage;
 		}
 		return null;

@@ -121,8 +121,8 @@ public class JwGroupAPI {
 	public static String groupMemberMove(String accesstoken,String openid,String to_groupid) throws WexinReqException{
 		GroupMembersUpdate u = new GroupMembersUpdate();
 		u.setAccess_token(accesstoken);
-		u.setOpenid(openid);;
-		u.setTo_groupid(to_groupid);
+		u.setOpenid(openid);
+        u.setTo_groupid(to_groupid);
 		JSONObject result = WeiXinReqService.getInstance().doWeinxinReqJson(u);
 		return result.getString("errmsg");
 	}
