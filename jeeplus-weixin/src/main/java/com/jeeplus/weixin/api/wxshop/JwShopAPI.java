@@ -10,13 +10,13 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.poi.util.IOUtils;
-import org.jeewx.api.core.common.JSONHelper;
-import org.jeewx.api.core.common.WxstoreUtils;
-import org.jeewx.api.coupon.location.model.BaseInfo;
-import org.jeewx.api.wxshop.model.Business;
-import org.jeewx.api.wxshop.model.BusinessReq;
-import org.jeewx.api.wxshop.model.PoiId;
-import org.jeewx.api.wxshop.model.ShopRtnInfo;
+import com.jeeplus.weixin.api.core.common.JSONHelper;
+import com.jeeplus.weixin.api.core.common.WeixinHttpUtils;
+import com.jeeplus.weixin.api.coupon.location.model.BaseInfo;
+import com.jeeplus.weixin.api.wxshop.model.Business;
+import com.jeeplus.weixin.api.wxshop.model.BusinessReq;
+import com.jeeplus.weixin.api.wxshop.model.PoiId;
+import com.jeeplus.weixin.api.wxshop.model.ShopRtnInfo;
 
 
 /**
@@ -47,7 +47,7 @@ public class JwShopAPI {
 	public static String getShopCategorys(String newAccessToken) {
 		if (newAccessToken != null) {
 			String requestUrl = shop_category_url.replace("ACCESS_TOKEN", newAccessToken);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "GET",null);
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "GET",null);
 			JSONArray info = result.getJSONArray("category_list");
 			String str = null;
 			str = JSONHelper.toBean(info, String.class);
@@ -62,7 +62,7 @@ public class JwShopAPI {
 		if (newAccessToken != null) {
 			String requestUrl = create_shop_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(business);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			ShopRtnInfo shopRtnInfo = (ShopRtnInfo)JSONObject.toBean(result, ShopRtnInfo.class);
 			return shopRtnInfo;
 		}
@@ -76,7 +76,7 @@ public class JwShopAPI {
 		if (newAccessToken != null) {
 			String requestUrl  = updatebystatus_shop_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(business);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			ShopRtnInfo shopRtnInfo = (ShopRtnInfo)JSONObject.toBean(result, ShopRtnInfo.class);
 			return shopRtnInfo;
 		}
@@ -90,7 +90,7 @@ public class JwShopAPI {
 		if (newAccessToken != null) {
 			String requestUrl  = del_shop_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(poiId);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			ShopRtnInfo shopRtnInfo = (ShopRtnInfo)JSONObject.toBean(result, ShopRtnInfo.class);
 			return shopRtnInfo;
 		}
@@ -105,7 +105,7 @@ public class JwShopAPI {
 		if (newAccessToken != null) {
 			String requestUrl = get_shop_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(poiId);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			JSONObject info = result.getJSONObject("business");
 			BaseInfo baseInfo = null;
 			baseInfo = (BaseInfo)JSONObject.toBean(info, BaseInfo.class);
@@ -121,7 +121,7 @@ public class JwShopAPI {
 		if (newAccessToken != null) {
 			String requestUrl = search_shop_url.replace("ACCESS_TOKEN", newAccessToken);
 			JSONObject obj = JSONObject.fromObject(businessReq);
-			JSONObject result = WxstoreUtils.httpRequest(requestUrl, "POST", obj.toString());
+			JSONObject result = WeixinHttpUtils.httpRequest(requestUrl, "POST", obj.toString());
 			// 正常返回
 			List<BaseInfo> baseInfos = null;
 			JSONArray info = result.getJSONArray("business_list");
@@ -136,8 +136,9 @@ public class JwShopAPI {
 	
 	/**
 	 * 上传图片
+	 * @param newAccessToken
+	 * @param filePath
 	 * @param fileName
-	 * @param accountid
 	 * @return
 	 */
 	public static String uploadImg(String newAccessToken, String filePath, String fileName) {
@@ -146,7 +147,7 @@ public class JwShopAPI {
 			byte[] fileByte;
 			try {
 				fileByte = fileData(filePath+fileName);
-				JSONObject result = WxstoreUtils.httpRequest2(requestUrl, "POST", fileByte);
+				JSONObject result = WeixinHttpUtils.httpRequest2(requestUrl, "POST", fileByte);
 				if (result.getInt("errcode") == 0) {
 					return result.getString("url");
 				}

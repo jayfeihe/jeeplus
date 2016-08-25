@@ -3,7 +3,7 @@ package com.jeeplus.weixin.api.wxbase.wxmedia.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jeewx.api.wxsendmsg.model.WxArticle;
+import com.jeeplus.weixin.api.wxsendmsg.model.WxArticle;
 /**
  * 获得媒体信息
  * @author lihongxuan
