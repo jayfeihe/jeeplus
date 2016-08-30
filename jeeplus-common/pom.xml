@@ -34,6 +34,17 @@
             <artifactId>kaptcha</artifactId>
             <version>0.0.9</version>
         </dependency>
+        <!--加入阿里大鱼和支付宝支付的依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>alidayu</artifactId>
+            <version>2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>alipay</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -47,6 +58,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <compilerArguments>
                         <verbose />
+                        <extdirs>src\main\resources\lib</extdirs>
                         <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>
