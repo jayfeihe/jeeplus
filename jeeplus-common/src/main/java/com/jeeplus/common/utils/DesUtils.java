@@ -7,6 +7,7 @@ import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.security.SecureRandom;
 
@@ -18,73 +19,55 @@ public class DesUtils {
 
     private static Logger logger= LoggerFactory.getLogger(DesUtils.class);
 
-    private static Key key;
-    private static String KEY_STR="jeeplus";
-    static {
+    public static final String defaultKey = "awujdklowdbsurtg";
+
+    /**
+     * AES加密
+     * @param str 要进行加密的字符串
+     * @param key 加密使用的key串
+     * @return
+     */
+    public static String aesEncrypt(String str, String key)  {
+        if (str == null || key == null)
+            return null;
         try {
-            KeyGenerator generator=KeyGenerator.getInstance("DES");
-            SecureRandom secureRandom=SecureRandom.getInstance("SHA1PRNG");
-            secureRandom.setSeed(KEY_STR.getBytes());
-            key=generator.generateKey();
-            generator=null;
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key.getBytes("utf-8"), "AES"));
+            byte[] bytes = cipher.doFinal(str.getBytes("utf-8"));
+            return new BASE64Encoder().encode(bytes);
         }catch (Exception e){
-            logger.error("运行时异常："+e.getMessage());
+            logger.error("AES加密失败："+e.getMessage());
             throw new RuntimeException(e);
         }
+
     }
 
     /**
-     * 对字符串进行加密，返回BASE64的加密字符串
-     * @param string 要进行加密的字符串
+     * AES解密
+     * @param str 要进行解密的字符串
+     * @param key 加密使用的key串
      * @return
      */
-    public static String getEncryptString(String string){
-        BASE64Encoder base64Encoder=new BASE64Encoder();
-        System.out.println(key);
+    public static String aesDecrypt(String str, String key)  {
+        if (str == null || key == null)
+            return null;
         try {
-            byte[] strBytes=string.getBytes("UTF-8");
-            Cipher cipher=Cipher.getInstance("DES");
-            cipher.init(Cipher.ENCRYPT_MODE,key);
-            byte[] encryptStrBytes=cipher.doFinal(strBytes);
-            return base64Encoder.encode(encryptStrBytes);
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key.getBytes("utf-8"), "AES"));
+            byte[] bytes = new BASE64Decoder().decodeBuffer(str);
+            bytes = cipher.doFinal(bytes);
+            return new String(bytes, "utf-8");
         }catch (Exception e){
-            logger.error("对字符串加密失败："+e.getMessage());
+            logger.error("AES解密失败："+e.getMessage());
             throw new RuntimeException(e);
         }
     }
 
-    /**
-     *  对BASE64加密字符串进行解密
-     * @param string 要进行解密的字符串
-     * @return
-     */
-    public static String getDecryptString(String string){
-        BASE64Decoder base64Decoder=new BASE64Decoder();
-        try {
-
-            byte[] strBytes=base64Decoder.decodeBuffer(string);
-            Cipher cipher=Cipher.getInstance("DES");
-            cipher.init(Cipher.DECRYPT_MODE,key);
-            byte[] encryptStrBytes=cipher.doFinal(strBytes);
-            return new String(encryptStrBytes,"UTF-8");
-        }catch (Exception e){
-            logger.error("对字符串解密失败："+e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    public static void main(String[] args)
-    {
-        String name ="root";
-        String password="yzp140103";
-        String encryname = getEncryptString(name);
-        String encrypassword = getEncryptString(password);
-        System.out.println(encryname);
-        System.out.println(encrypassword);
-
-        System.out.println(getDecryptString(encryname));
-        System.out.println(getDecryptString(encrypassword));
+    public static void main(String[] args) throws Exception {
+        String str = aesEncrypt("root", DesUtils.defaultKey);
+        System.out.println(str);
+        str = aesDecrypt("yimLj5LvEgx/Noi9/GGzXw==", DesUtils.defaultKey);
+        System.out.println(str);
     }
 
 

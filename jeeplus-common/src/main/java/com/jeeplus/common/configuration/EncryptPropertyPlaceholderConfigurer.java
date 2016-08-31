@@ -36,7 +36,7 @@ public class EncryptPropertyPlaceholderConfigurer extends PropertyPlaceholderCon
     protected String convertProperty(String propertyName,String propertyValue){
         //如果在加密属性中发现该名单
         if(isEncryptProp(propertyName)){
-            String decryptValue= DesUtils.getDecryptString(propertyValue);
+            String decryptValue= DesUtils.aesDecrypt(propertyValue,DesUtils.defaultKey);
             logger.info("解密后的字符串为："+decryptValue);
             return  decryptValue;
         }else

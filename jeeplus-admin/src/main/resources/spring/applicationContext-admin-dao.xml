@@ -25,4 +25,16 @@
         <property name="maxWait" value="${jdbc.maxWait}"/>
     </bean>
 
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:com/jeeplus/admin/mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="com.jeeplus.admin"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+    </bean>
+
+    <bean id="scannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
+        <property name="basePackage" value="com.jeeplus.admin.mapper"/>
+    </bean>
+
 </beans>

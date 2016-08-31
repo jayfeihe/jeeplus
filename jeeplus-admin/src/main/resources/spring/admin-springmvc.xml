@@ -7,16 +7,20 @@
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
+    <!-- 对静态资源文件的访问，交给default servlet handler处理 -->
+    <mvc:default-servlet-handler />
 
-    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <context:component-scan base-package="com.jeeplus.admin.controller"/>
+    <!-- 自动扫描该包 -->
+    <context:component-scan base-package="com.jeeplus.admin"/>
+
+    <context:annotation-config/>
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJackson2HttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
-                <value>text/html;charset=UTF-8></value>
+                <value>text/html;charset=UTF-8</value>
             </list>
         </property>
     </bean>
@@ -29,7 +33,25 @@
     </bean>
 
     <!--启动mvc的注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean id="jackson2HttpMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
-
+    <!--配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理-->
+    <mvc:resources mapping="/plugins/" location="/plugins/"/>
+    <mvc:resources mapping="/resources/" location="/resources/"/>
+    <mvc:resources mapping="/static/" location="/static/"/>
 </beans>
