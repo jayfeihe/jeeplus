@@ -90,7 +90,7 @@
 			sul3.append(sli3);
 			var sa3 = $("<a openUrl='" + menudata.menuUrl + "' ><i class=\"fa "
 					+ option.icons[menudata.menuType] + "\"></i>"
-					+ menudata.menuName + "</a>")
+					+ menudata.menuName + "</a>");
 			sli3.append(sa3);
 			sa3.click(function() {
 				var $this = $(this);

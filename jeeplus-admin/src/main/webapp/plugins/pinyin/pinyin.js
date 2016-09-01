@@ -3,8 +3,8 @@
  * 拼音工具类
  * @return
  */
-function Pinyin() {};
-
+function Pinyin() {
+}
 /**
  * 
  * 转换汉字到拼音首字母
@@ -14,7 +14,7 @@ function Pinyin() {};
 Pinyin.genFirstPy = function(str) {
 	if (typeof (str) != "string")
 		throw new Error(-1, "函数makePy需要字符串类型参数!");
-	var arrResult = new Array(); // 保存中间结果的数组
+	var arrResult = []; // 保存中间结果的数组
 	for ( var i = 0, len = str.length; i < len; i++) {
 		// 获得unicode码
 		var ch = str.charAt(i);

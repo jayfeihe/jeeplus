@@ -22,7 +22,7 @@
             this.$pageList = $el.find('.pageList');
             this.$limitList = $el.find('.limit select');
 
-             var $limitList = this.$limitList
+             var $limitList = this.$limitList;
             $.each(opts.limitList, function(){
                 var $option = $('<option></option>')
                     .prop('value',this)

@@ -605,9 +605,7 @@
                 }).on('mouseleave','tr', function () {
                     $(this).toggleClass('hover');
                 });
-            };
-
-
+            }
         }
 
         , _rowHtml: function(item, rowIndex){
@@ -639,7 +637,7 @@
                     }
 
                     trHtml.push('</span></td>');
-                };
+                }
                 trHtml.push('</tr>');
                 return trHtml.join('');
             }
@@ -1156,7 +1154,7 @@
 
         , selectedRowsIndex: function(){
             var $body = this.$body;
-            var $trs = this.$body.find('tr')
+            var $trs = this.$body.find('tr');
             var selected = [];
             $.each($body.find('tr.selected'), function(index){
                 selected.push($trs.index(this));

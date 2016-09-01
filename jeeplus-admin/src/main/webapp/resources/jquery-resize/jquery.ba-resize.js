@@ -199,9 +199,8 @@
         data.h = h !== undefined ? h : elem.height();
         
         old_handler.apply( this, arguments );
-      };
-      
-      // This may seem a little complicated, but it normalizes the special event
+      }
+        // This may seem a little complicated, but it normalizes the special event
       // .add method between jQuery 1.4/1.4.1 and 1.4.2+
       if ( $.isFunction( handleObj ) ) {
         // 1.4, 1.4.1
@@ -240,7 +239,6 @@
       loopy();
       
     }, jq_resize[ str_delay ] );
-    
-  };
   
+}
 })(jQuery,this);

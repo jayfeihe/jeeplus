@@ -5903,7 +5903,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                             tmpNode = tmpNode.previousSibling;
                         }
                         firstIndex +=  (isStart ? me.startOffset : me.endOffset)// - (fillCharReg.test(node.nodeValue) ? 1 : 0 )
-                    };;
+                    };
                 else
                     {
                         node =  node.childNodes[ isStart ? me.startOffset : me.endOffset];

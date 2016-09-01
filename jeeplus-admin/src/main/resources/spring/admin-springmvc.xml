@@ -10,6 +10,7 @@
     <!-- 对静态资源文件的访问，交给default servlet handler处理 -->
     <mvc:default-servlet-handler />
 
+
     <!-- 自动扫描该包 -->
     <context:component-scan base-package="com.jeeplus.admin"/>
 
@@ -51,7 +52,7 @@
     </mvc:annotation-driven>
 
     <!--配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理-->
-    <mvc:resources mapping="/plugins/" location="/plugins/"/>
-    <mvc:resources mapping="/resources/" location="/resources/"/>
-    <mvc:resources mapping="/static/" location="/static/"/>
+    <mvc:resources mapping="/plugins/**" location="/plugins/"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
 </beans>
